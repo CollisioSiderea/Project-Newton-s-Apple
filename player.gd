@@ -40,10 +40,13 @@ func _physics_process(delta):
 	if walk_left:
 		if velocity.x <= WALK_MIN_SPEED and velocity.x > -WALK_MAX_SPEED:
 			force.x -= WALK_FORCE
+	#		$PAnimation.play("walk")
 			stop = false
+			#$PAnimation.play("idle")
 	elif walk_right:
 		if velocity.x >= -WALK_MIN_SPEED and velocity.x < WALK_MAX_SPEED:
 			force.x += WALK_FORCE
+	#		$PAnimation.play("walk")
 			stop = false
 			
 	if up:
@@ -58,7 +61,10 @@ func _physics_process(delta):
 	if grav:
 		if GRAVITY == 500:
 			GRAVITY = 0
-		if WALK_FORCE == 100:
+	#		$PAnimation.play("gravity")
+			var pfloat = true 
+			
+		if WALK_FORCE == 100: 
 			WALK_FORCE = 10
 		if STOP_FORCE == 1000:
 			STOP_FORCE = 10
@@ -66,7 +72,7 @@ func _physics_process(delta):
 			GRAVITY = 500
 			WALK_FORCE = 100
 			STOP_FORCE = 1000
-			
+		
 	
 	if stop:
 		var vsign = sign(velocity.x)
@@ -77,7 +83,7 @@ func _physics_process(delta):
 			vlen = 0
 		
 		velocity.x = vlen * vsign
-	
+		
 	# Integrate forces to velocity
 	velocity += force * delta	
 	# Integrate velocity into motion and move
@@ -95,6 +101,7 @@ func _physics_process(delta):
 		# Makes controls more snappy.
 		velocity.y = -JUMP_SPEED
 		jumping = true
-	
+	#if pfloat = true:
+	#	$PAnimation.play("idle")
 	on_air_time += delta
 	prev_jump_pressed = jump

@@ -1,18 +1,66 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
-[ext_resource path="res://player.png" type="Texture" id=2]
+[ext_resource path="res://blink_16frms_16x25px/blink_0002.png" type="Texture" id=2]
+[ext_resource path="res://IDOL_8frms_16x25px/IDOL_0007.png" type="Texture" id=3]
+[ext_resource path="res://blink_16frms_16x25px/blink_0000.png" type="Texture" id=4]
+[ext_resource path="res://Walk_cycle_6frms_16x25px/WC_0001.png" type="Texture" id=5]
+[ext_resource path="res://Walk_cycle_6frms_16x25px/WC_0004.png" type="Texture" id=6]
+[ext_resource path="res://Walk_cycle_6frms_16x25px/WC_0003.png" type="Texture" id=7]
+[ext_resource path="res://Walk_cycle_6frms_16x25px/WC_0000.png" type="Texture" id=8]
+[ext_resource path="res://IDOL_8frms_16x25px/IDOL_0000.png" type="Texture" id=9]
+[ext_resource path="res://Walk_cycle_6frms_16x25px/WC_0002.png" type="Texture" id=10]
+[ext_resource path="res://Walk_cycle_6frms_16x25px/WC_0005.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/GRAVITY_8frms_0003.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/GRAVITY_8frms_0000.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/GRAVITY_8frms_0001.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/GRAVITY_8frms_0002.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/FLOAT_IDOL_8frms_0000.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/FLOAT_IDOL_8frms_0001.png" type="Texture" id=17]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7, 7 )
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "gravity",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "blink",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "airidle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.66055, 9.94807 )
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
-[node name="sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="PAnimation" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.315559, 0.157784 )
-shape = SubResource( 1 )
-
+position = Vector2( -0.403949, 0.599727 )
+shape = SubResource( 2 )
