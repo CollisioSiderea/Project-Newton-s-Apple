@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://colworld.gd" type="Script" id=1]
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://princess.png" type="Texture" id=4]
 [ext_resource path="res://circle.png" type="Texture" id=5]
 [ext_resource path="res://long_obstacle.png" type="Texture" id=6]
-[ext_resource path="res://caja 1.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -155,9 +154,7 @@ anims/updown = SubResource( 6 )
 
 [node name="caja 1" type="RigidBody2D" parent="."]
 position = Vector2( 340.11, 283.893 )
-gravity_scale = 0.0
 can_sleep = false
-script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }

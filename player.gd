@@ -51,7 +51,7 @@ func _physics_process(delta):
 			
 	if up:
 		if velocity.y <= WALK_MIN_SPEED and velocity.y > -WALK_MAX_SPEED:
-			#force.y -= WALK_FORCE
+			force.y -= WALK_FORCE
 			stop = false
 	elif down:
 		if velocity.y >= -WALK_MIN_SPEED and velocity.y < WALK_MAX_SPEED:
