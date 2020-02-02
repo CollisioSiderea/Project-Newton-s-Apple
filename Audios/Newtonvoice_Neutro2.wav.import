@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Newtonvoice_Neutro2.wav-84fccb410f6654026e3a18c1c63e3879.sample"
+
+[deps]
+
+source_file="res://Audios/Newtonvoice_Neutro2.wav"
+dest_files=[ "res://.import/Newtonvoice_Neutro2.wav-84fccb410f6654026e3a18c1c63e3879.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

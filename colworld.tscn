@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://colworld.gd" type="Script" id=1]
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://long_obstacle.png" type="Texture" id=6]
 [ext_resource path="res://Newton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/FONDO_SPRITE.png" type="Texture" id=8]
+[ext_resource path="res://RichTextLabel.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -32,55 +33,6 @@ extents = Vector2( 8, 8 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 7.86114, 7.67534 )
-
-[sub_resource type="Animation" id=4]
-length = 10.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 184, 152 ), Vector2( 184, 152 ), Vector2( 328.086, 152 ), Vector2( 328.086, 152 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "leftright"
-length = 10.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 184, 152 ), Vector2( 184, 152 ), Vector2( 328.086, 152 ), Vector2( 328.086, 152 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 10.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 88.3493, 296 ), Vector2( 88.3493, 296 ), Vector2( 88.3493, 152 ), Vector2( 88.3493, 152 ) ]
-}
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 8, 8 )
@@ -126,36 +78,8 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 336.226, 292.784 )
 
-[node name="moving_platform1" type="KinematicBody2D" parent="."]
-position = Vector2( 184, 152 )
-
-[node name="collision" type="CollisionShape2D" parent="moving_platform1"]
-shape = SubResource( 3 )
-
-[node name="sprite" type="Sprite" parent="moving_platform1"]
-texture = ExtResource( 2 )
-
-[node name="anim" type="AnimationPlayer" parent="moving_platform1"]
-autoplay = "leftright"
-playback_process_mode = 0
-anims/leftright = SubResource( 4 )
-
-[node name="moving_platform2" type="KinematicBody2D" parent="."]
-position = Vector2( 184, 152 )
-
-[node name="collision" type="CollisionShape2D" parent="moving_platform2"]
-shape = SubResource( 3 )
-
-[node name="sprite" type="Sprite" parent="moving_platform2"]
-texture = ExtResource( 2 )
-
-[node name="anim" type="AnimationPlayer" parent="moving_platform2"]
-autoplay = "updown"
-playback_process_mode = 0
-anims/leftright = SubResource( 5 )
-anims/updown = SubResource( 6 )
-
 [node name="caja" type="RigidBody2D" parent="."]
+visible = false
 position = Vector2( 124.226, 250.62 )
 can_sleep = false
 
@@ -240,15 +164,6 @@ shape = SubResource( 3 )
 position = Vector2( -0.0380402, 0.206909 )
 texture = ExtResource( 2 )
 
-[node name="princess" type="Area2D" parent="."]
-position = Vector2( 88.9038, 455.837 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="collision" type="CollisionShape2D" parent="princess"]
-shape = SubResource( 7 )
-
 [node name="muerte" type="Area2D" parent="."]
 position = Vector2( 329.087, 455.368 )
 __meta__ = {
@@ -256,15 +171,6 @@ __meta__ = {
 }
 
 [node name="collision" type="CollisionShape2D" parent="muerte"]
-shape = SubResource( 7 )
-
-[node name="bottom" type="Area2D" parent="."]
-position = Vector2( 103.582, 135.957 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="collision" type="CollisionShape2D" parent="bottom"]
 shape = SubResource( 7 )
 
 [node name="youwin" type="Label" parent="."]
@@ -324,6 +230,7 @@ shape = SubResource( 8 )
 one_way_collision = true
 
 [node name="circle" type="KinematicBody2D" parent="."]
+visible = false
 position = Vector2( 241.169, 304.126 )
 
 [node name="sprite" type="Sprite" parent="circle"]
@@ -374,6 +281,22 @@ scroll_ignore_camera_zoom = true
 position = Vector2( 265.101, 254.391 )
 scale = Vector2( 1.63739, 1.59509 )
 texture = ExtResource( 8 )
-[connection signal="body_entered" from="princess" to="." method="_on_princess_body_enter"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 0, 17.7671 )
+scale = Vector2( 1, 0.954546 )
+color = Color( 0.109804, 0.00784314, 0.00784314, 0.717647 )
+polygon = PoolVector2Array( 64.7456, 353.313, 64.7456, 411.975, 462.749, 412.878, 462.749, 357.825 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Polygon2D"]
+show_behind_parent = true
+margin_left = 59.0
+margin_top = 349.0
+margin_right = 462.0
+margin_bottom = 415.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="muerte" to="." method="_on_muerte_body_entered"]
-[connection signal="body_entered" from="bottom" to="." method="_on_bottom_body_entered"]
