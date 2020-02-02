@@ -367,4 +367,4 @@ shape = SubResource( 12 )
 position = Vector2( 308, 294.25 )
 [connection signal="body_entered" from="princess" to="." method="_on_princess_body_enter"]
 [connection signal="body_entered" from="muerte" to="." method="_on_muerte_body_entered"]
-[connection signal="input_event" from="bottom" to="." method="_on_bottom_input_event"]
+[connection signal="body_entered" from="bottom" to="." method="_on_bottom_body_entered"]
