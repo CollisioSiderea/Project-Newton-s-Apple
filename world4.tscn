@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://colworld.gd" type="Script" id=1]
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
@@ -6,7 +6,31 @@
 [ext_resource path="res://princess.png" type="Texture" id=4]
 [ext_resource path="res://circle.png" type="Texture" id=5]
 [ext_resource path="res://long_obstacle.png" type="Texture" id=6]
-[ext_resource path="res://Newton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0017.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0001.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0014.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0013.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0015.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0018.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0012.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0019.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0005.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0003.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0006.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0010.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0016.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0000.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0009.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0002.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0004.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0007.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0008.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0011.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0020.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0021.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0022.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0023.png" type="Texture" id=30]
+[ext_resource path="res://RigidBody2D.gd" type="Script" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -111,6 +135,17 @@ extents = Vector2( 8, 8 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 32, 8 )
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 7.87347
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 8 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 23 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 26 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 19 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "jugo",
+"speed": 23.0
+} ]
 
 [node name="colworld" type="Node2D"]
 script = ExtResource( 1 )
@@ -317,6 +352,18 @@ texture = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform1"]
 shape = SubResource( 12 )
 
-[node name="RigidBody2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 308, 294.25 )
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 310.674, 288.074 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource( 13 )
+
+[node name="ANewton" type="AnimatedSprite" parent="RigidBody2D"]
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 14 )
+animation = "jugo"
 [connection signal="body_entered" from="princess" to="." method="_on_princess_body_enter"]
