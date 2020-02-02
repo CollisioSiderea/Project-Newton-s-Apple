@@ -268,4 +268,3 @@ animation = "closed"
 [connection signal="body_entered" from="muerte" to="." method="_on_muerte_body_entered"]
 [connection signal="body_entered" from="princes" to="boton" method="_on_princes_body_entered"]
 [connection signal="body_entered" from="salida4" to="." method="_on_salida4_body_entered"]
-[connection signal="body_entered" from="boton/puerta" to="." method="_on_puerta_body_entered"]
