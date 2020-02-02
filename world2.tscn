@@ -5,7 +5,7 @@
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Newton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://RTS_Crate.png" type="Texture" id=5]
-[ext_resource path="res://player.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/button_sprite(blue}.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/door_0002.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/door_0005.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/door_0007.png" type="Texture" id=9]
@@ -132,8 +132,8 @@ __meta__ = {
 shape = SubResource( 5 )
 
 [node name="botona" type="Sprite" parent="boton"]
-position = Vector2( 0.0618237, -0.185416 )
-scale = Vector2( 1.20861, 1.20861 )
+position = Vector2( -0.147165, -2.92819 )
+scale = Vector2( 1.30696, 1.60044 )
 texture = ExtResource( 6 )
 
 [node name="salida2" type="Area2D" parent="."]

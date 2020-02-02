@@ -3,7 +3,7 @@
 [ext_resource path="res://colworld.gd" type="Script" id=1]
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://princess.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/button_sprite.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/door_0002.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/door_0005.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0017.png" type="Texture" id=7]
@@ -162,8 +162,8 @@ __meta__ = {
 shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="boton2"]
-position = Vector2( 0.266832, 0.400238 )
-scale = Vector2( 1.20012, 1.25015 )
+position = Vector2( 0.198352, 0.26326 )
+scale = Vector2( 1.82054, 1.99373 )
 texture = ExtResource( 4 )
 
 [node name="pared" type="StaticBody2D" parent="."]
