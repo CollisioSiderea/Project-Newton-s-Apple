@@ -1,8 +1,7 @@
 extends Node2D
 var push = Input.is_action_just_pressed("push")
 
-		
-
+#ParallaxBackground.
 
 func _on_muerte_body_entered(body):
 	if body.get_name() == "caja":

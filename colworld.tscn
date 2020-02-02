@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://colworld.gd" type="Script" id=1]
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://circle.png" type="Texture" id=5]
 [ext_resource path="res://long_obstacle.png" type="Texture" id=6]
 [ext_resource path="res://Newton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/FONDO_SPRITE.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -365,6 +366,14 @@ shape = SubResource( 12 )
 
 [node name="RigidBody2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 308, 294.25 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="FONDO_SPRITE" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 265.101, 254.391 )
+scale = Vector2( 1.63739, 1.59509 )
+texture = ExtResource( 8 )
 [connection signal="body_entered" from="princess" to="." method="_on_princess_body_enter"]
 [connection signal="body_entered" from="muerte" to="." method="_on_muerte_body_entered"]
 [connection signal="body_entered" from="bottom" to="." method="_on_bottom_body_entered"]
