@@ -6,16 +6,16 @@ extends KinematicBody2D
 var GRAVITY = 157 # pixels/second/second
 
 # Angle in degrees towards either side that the player can consider "floor"
-const FLOOR_ANGLE_TOLERANCE = 40
+var FLOOR_ANGLE_TOLERANCE = 40
 var WALK_FORCE = 1000
-const WALK_MIN_SPEED = 10
-const WALK_MAX_SPEED = 100
+var WALK_MIN_SPEED = 10
+var WALK_MAX_SPEED = 65
 var STOP_FORCE = 1000
 var JUMP_SPEED = 115
-const JUMP_MAX_AIRBORNE_TIME = 0.01
+var JUMP_MAX_AIRBORNE_TIME = 0.01
 
-const SLIDE_STOP_VELOCITY = 1000.0 # one pixel/second
-const SLIDE_STOP_MIN_TRAVEL = 1000.0 # one pixel
+var SLIDE_STOP_VELOCITY = 1000.0 # one pixel/second
+var SLIDE_STOP_MIN_TRAVEL = 1000.0 # one pixel
 
 var velocity = Vector2()
 var on_air_time = 100
@@ -62,13 +62,15 @@ func _physics_process(delta):
 	if grav:
 		if GRAVITY == 157:
 			GRAVITY = 1
-			WALK_FORCE = 25
-			STOP_FORCE = 25
+			WALK_FORCE = 50
+			STOP_FORCE = 1000
 			animation="gravity"
+			Physics2DServer.area_set_param(get_world_2d().space, Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, Vector2(0,0))
 		else: 
 			GRAVITY = 157
 			WALK_FORCE = 250
 			STOP_FORCE = 1000
+			Physics2DServer.area_set_param(get_world_2d().space, Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, Vector2(0,1.5))
 
 	if stop:
 		var vsign = sign(velocity.x)
@@ -77,8 +79,15 @@ func _physics_process(delta):
 		if vlen < 0:
 			vlen = 0
 		velocity.x = vlen * vsign
-		if GRAVITY>1:
-				animation="idle"
+		if GRAVITY<=1:
+			var yvsign = sign(velocity.y)
+			var yvlen = abs(velocity.y)
+			yvlen -= STOP_FORCE * delta
+			if yvlen < 0:
+				yvlen = 0
+			velocity.y = yvlen * yvsign
+		else:
+			animation="idle"
 		
 	# Integrate forces to velocity
 	velocity += force * delta	
@@ -101,5 +110,5 @@ func _physics_process(delta):
 	#	$PAnimation.play("idle")
 	on_air_time += delta
 	prev_jump_pressed = jump
-	
+
 	$PAnimation.play(animation)
