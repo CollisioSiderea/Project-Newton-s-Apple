@@ -112,5 +112,5 @@ func _physics_process(delta):
 	elif GRAVITY > 2 and velocity.x > 0:
 		animation = "walkr"
 	elif GRAVITY < 2 and velocity.x <= 0 or velocity.x > 0:
-		animation = "gravity" 
+		animation = "gravity"
 	$PAnimation.play(animation)
