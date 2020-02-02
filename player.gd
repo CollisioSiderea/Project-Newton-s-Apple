@@ -9,7 +9,7 @@ var GRAVITY = 157 # pixels/second/second
 var FLOOR_ANGLE_TOLERANCE = 40
 var WALK_FORCE = 1000
 var WALK_MIN_SPEED = 10
-var WALK_MAX_SPEED = 65
+var WALK_MAX_SPEED = 75
 var STOP_FORCE = 1000
 var JUMP_SPEED = 115
 var JUMP_MAX_AIRBORNE_TIME = 0.01
@@ -59,11 +59,13 @@ func _physics_process(delta):
 		if GRAVITY == 157:
 			GRAVITY = 1
 			WALK_FORCE = 50
+			WALK_MAX_SPEED = 50
 			STOP_FORCE = 1000
 			Physics2DServer.area_set_param(get_world_2d().space, Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, Vector2(0,0))
 		else: 
 			GRAVITY = 157
 			WALK_FORCE = 250
+			WALK_MAX_SPEED = 75
 			STOP_FORCE = 1000
 			Physics2DServer.area_set_param(get_world_2d().space, Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, Vector2(0,1.5))
 
