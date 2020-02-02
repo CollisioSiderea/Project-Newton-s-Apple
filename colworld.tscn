@@ -180,6 +180,34 @@ shape = SubResource( 3 )
 position = Vector2( -0.0380402, 0.206909 )
 texture = ExtResource( 4 )
 
+[node name="boton3" type="StaticBody2D" parent="."]
+position = Vector2( 329.063, 455.436 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="collision" type="CollisionShape2D" parent="boton3"]
+position = Vector2( 0.0136414, 0.186295 )
+shape = SubResource( 3 )
+
+[node name="sprite" type="Sprite" parent="boton3"]
+position = Vector2( -0.0380402, 0.206909 )
+texture = ExtResource( 4 )
+
+[node name="boton2" type="StaticBody2D" parent="."]
+position = Vector2( 103.842, 135.786 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="collision" type="CollisionShape2D" parent="boton2"]
+position = Vector2( 0.0136414, 0.186295 )
+shape = SubResource( 3 )
+
+[node name="sprite" type="Sprite" parent="boton2"]
+position = Vector2( -0.0380402, 0.206909 )
+texture = ExtResource( 4 )
+
 [node name="pared" type="StaticBody2D" parent="."]
 position = Vector2( 279.747, 436.306 )
 scale = Vector2( 1, 3.44 )
@@ -218,6 +246,24 @@ __meta__ = {
 }
 
 [node name="collision" type="CollisionShape2D" parent="princess"]
+shape = SubResource( 7 )
+
+[node name="muerte" type="Area2D" parent="."]
+position = Vector2( 329.087, 455.368 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="collision" type="CollisionShape2D" parent="muerte"]
+shape = SubResource( 7 )
+
+[node name="bottom" type="Area2D" parent="."]
+position = Vector2( 103.582, 135.957 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="collision" type="CollisionShape2D" parent="bottom"]
 shape = SubResource( 7 )
 
 [node name="youwin" type="Label" parent="."]
@@ -320,3 +366,4 @@ shape = SubResource( 12 )
 [node name="RigidBody2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 308, 294.25 )
 [connection signal="body_entered" from="princess" to="." method="_on_princess_body_enter"]
+[connection signal="body_entered" from="muerte" to="." method="_on_muerte_body_entered"]
