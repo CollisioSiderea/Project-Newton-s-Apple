@@ -45,17 +45,17 @@ position = Vector2( 25.253, 206.009 )
 [node name="RigidBody2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 105.762, 160.027 )
 
-[node name="salida" type="Area2D" parent="."]
+[node name="salida1" type="Area2D" parent="."]
 position = Vector2( 293.816, 207.368 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="salida"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="salida1"]
 shape = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="salida"]
+[node name="Sprite" type="Sprite" parent="salida1"]
 position = Vector2( 0.177028, -0.265521 )
 scale = Vector2( 1.19915, 1.18808 )
 texture = ExtResource( 5 )
-[connection signal="body_entered" from="salida" to="." method="_on_salida_body_entered"]
+[connection signal="body_entered" from="salida1" to="." method="_on_salida1_body_entered"]
