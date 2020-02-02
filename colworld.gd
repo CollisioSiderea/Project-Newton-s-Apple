@@ -72,5 +72,16 @@ func _on_boton_body_entered(body):
 
 
 #func _on_puerta_body_entered(body):
+	#$puerta/Doora.play("closed")
+	#if body.is_colliding():
 	#if body.get_name() != "pared":
+		#$boton/puerta/Doora.play("open")
+		
+	#	var t = Timer.new() 		# Create a new Timer node
+	#	t.set_wait_time(5.5) 		# Set the wait time
+	#	add_child(t)			# Add it to the node tree as the direct child
+	#	t.start()			# Start it
+	#	yield(t, "timeout")	
+		
+	#	$boton/puerta/Doora.play("close")
 		
