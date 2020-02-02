@@ -5,7 +5,6 @@
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://RTS_Crate.png" type="Texture" id=4]
 [ext_resource path="res://boton.gd" type="Script" id=5]
-[ext_resource path="res://player.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0017.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0001.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0014.png" type="Texture" id=9]
@@ -92,6 +91,8 @@ extents = Vector2( 4.29886, 2.83267 )
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 6.48685, 14.8568 )
+
+[sub_resource type="RectangleShape2D" id=11]
 
 [node name="colworld" type="Node2D"]
 script = ExtResource( 1 )
@@ -185,10 +186,14 @@ scale = Vector2( 0.91375, -3.26774 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boton/pared"]
 shape = SubResource( 10 )
 
-[node name="Sprite" type="Sprite" parent="boton/pared"]
-position = Vector2( 0.217352, -0.217332 )
-scale = Vector2( 1.19017, 1.19017 )
-texture = ExtResource( 6 )
+[node name="puerta" type="Area2D" parent="boton"]
+position = Vector2( 163.917, -60.3703 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boton/puerta"]
+shape = SubResource( 11 )
 [connection signal="body_entered" from="muerte" to="." method="_on_muerte_body_entered"]
 [connection signal="body_entered" from="princes" to="boton" method="_on_princes_body_entered"]
 [connection signal="body_entered" from="salida4" to="." method="_on_salida4_body_entered"]

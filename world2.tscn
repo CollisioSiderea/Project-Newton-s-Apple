@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://colworld.gd" type="Script" id=1]
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
@@ -36,6 +36,8 @@ extents = Vector2( 15.9268, 16.165 )
 [sub_resource type="RectangleShape2D" id=5]
 
 [sub_resource type="RectangleShape2D" id=6]
+
+[sub_resource type="RectangleShape2D" id=7]
 
 [node name="colworld" type="Node2D"]
 script = ExtResource( 1 )
@@ -77,6 +79,7 @@ __meta__ = {
 shape = SubResource( 4 )
 
 [node name="pared" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2( 305.643, 120.394 )
 scale = Vector2( 1, 4.12 )
 __meta__ = {
@@ -85,11 +88,6 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pared"]
 shape = SubResource( 5 )
-
-[node name="Sprite" type="Sprite" parent="pared"]
-position = Vector2( 0.0618237, -0.185416 )
-scale = Vector2( 1.20861, 1.20861 )
-texture = ExtResource( 6 )
 
 [node name="boton" type="StaticBody2D" parent="."]
 position = Vector2( 232.2, 295.506 )
@@ -115,5 +113,15 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="salida2"]
 shape = SubResource( 6 )
+
+[node name="puerta" type="Area2D" parent="."]
+position = Vector2( 305.471, 120.305 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puerta"]
+shape = SubResource( 7 )
 [connection signal="body_entered" from="princess" to="." method="_on_princess_body_entered"]
 [connection signal="body_entered" from="salida2" to="." method="_on_salida2_body_entered"]
+[connection signal="body_entered" from="puerta" to="." method="_on_puerta_body_entered"]
