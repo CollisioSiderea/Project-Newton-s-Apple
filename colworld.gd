@@ -69,3 +69,8 @@ func _on_boton_body_entered(body):
 		yield(t, "timeout")		# Finally, make the script stop with the yield
 		
 		$pared.move_local_y(-100,true)
+
+
+#func _on_puerta_body_entered(body):
+	#if body.get_name() != "pared":
+		
