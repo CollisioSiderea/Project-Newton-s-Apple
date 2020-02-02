@@ -14,10 +14,10 @@ func _physics_process(delta):
 	var force = Vector2(0, GRAVITY)
 	var grav = Input.is_action_just_pressed("grav")
 	
-	var walk_left = Input.is_action_pressed("move_left")
-	var walk_right = Input.is_action_pressed("move_right")
-	var up = Input.is_action_pressed("move_up")
-	var down = Input.is_action_pressed("move_bottom")
+	#var walk_left = Input.is_action_pressed("move_left")
+	#var walk_right = Input.is_action_pressed("move_right")
+	#var up = Input.is_action_pressed("move_up")
+	#var down = Input.is_action_pressed("move_bottom")
 	
 	if grav:
 		if GRAVITY == 157:

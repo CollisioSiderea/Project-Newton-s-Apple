@@ -7,11 +7,11 @@ func _on_princess_body_enter(body):
 		#$pared.rotate(-5000)
 		#$pared. remove_and_skip()
 		#$pared. hide()
-		$caja. remove_and_skip()
-		$pared. move_local_y(50,true)
-		$puente. move_local_x(60,true)
+		$caja.remove_and_skip()
+		$pared.move_local_y(50,true)
+		$puente.move_local_x(60,true)
 		
 	else:
 		#$pared. show()
-		$pared. move_local_y(0,false)
-		$puente. move_local_x(0,false)
+		$pared.move_local_y(0,false)
+		$puente.move_local_x(0,false)
