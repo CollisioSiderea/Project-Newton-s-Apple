@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://colworld.gd" type="Script" id=1]
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
@@ -6,6 +6,21 @@
 [ext_resource path="res://Newton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://RTS_Crate.png" type="Texture" id=5]
 [ext_resource path="res://player.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/door_0002.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/door_0005.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/door_0007.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/door_0012.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/door_0001.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/door_0009.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/door_0014.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/door_0006.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/door_0003.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/door_0010.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/door_0008.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/door_0004.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/door_0000.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/door_0013.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/door_0011.png" type="Texture" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -38,6 +53,25 @@ extents = Vector2( 15.9268, 16.165 )
 [sub_resource type="RectangleShape2D" id=6]
 
 [sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 18.6414, 38.9923 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 7 ), ExtResource( 19 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "close",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 20 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "open",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": false,
+"name": "closed",
+"speed": 5.0
+} ]
 
 [node name="colworld" type="Node2D"]
 script = ExtResource( 1 )
@@ -69,7 +103,6 @@ scale = Vector2( 0.062, 0.062 )
 texture = ExtResource( 5 )
 
 [node name="princess" type="Area2D" parent="."]
-visible = false
 position = Vector2( 232.955, 294.338 )
 __meta__ = {
 "_edit_group_": true
@@ -79,7 +112,6 @@ __meta__ = {
 shape = SubResource( 4 )
 
 [node name="pared" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2( 305.643, 120.394 )
 scale = Vector2( 1, 4.12 )
 __meta__ = {
@@ -115,13 +147,19 @@ __meta__ = {
 shape = SubResource( 6 )
 
 [node name="puerta" type="Area2D" parent="."]
-position = Vector2( 305.471, 120.305 )
+position = Vector2( 306.506, 119.615 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="puerta"]
+position = Vector2( -3.05176e-05, 0.344841 )
 shape = SubResource( 7 )
+
+[node name="Doora" type="AnimatedSprite" parent="puerta"]
+position = Vector2( 0, 1.90735e-06 )
+scale = Vector2( 0.632172, 0.799993 )
+frames = SubResource( 8 )
+animation = "open"
 [connection signal="body_entered" from="princess" to="." method="_on_princess_body_entered"]
 [connection signal="body_entered" from="salida2" to="." method="_on_salida2_body_entered"]
-[connection signal="body_entered" from="puerta" to="." method="_on_puerta_body_entered"]
