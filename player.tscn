@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://blink_16frms_16x25px/blink_0002.png" type="Texture" id=2]
@@ -17,6 +17,15 @@
 [ext_resource path="res://Sprites/GRAVITY_8frms_0002.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/FLOAT_IDOL_8frms_0000.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/FLOAT_IDOL_8frms_0001.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/WALKCYCLE_RIGHT_6frms_/WALKCYCLE_RIGHT_6frms_0001.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/WALKCYCLE_RIGHT_6frms_/WALKCYCLE_RIGHT_6frms_0000.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/WALKCYCLE_RIGHT_6frms_/WALKCYCLE_RIGHT_6frms_0003.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/WALKCYCLE_RIGHT_6frms_/WALKCYCLE_RIGHT_6frms_0004.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/WALKCYCLE_RIGHT_6frms_/WALKCYCLE_RIGHT_6frms_0005.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/WALKCYCLE_RIGHT_6frms_/WALKCYCLE_RIGHT_6frms_0002.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/falling_5frms_0000.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/falling_5frms_0001.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/falling_5frms_0002.png" type="Texture" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -30,25 +39,30 @@ animations = [ {
 "name": "gravity",
 "speed": 6.0
 }, {
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk",
+"speed": 7.0
+}, {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "blink",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "falling",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "airidle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "walkr",
+"speed": 7.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -59,8 +73,12 @@ script = ExtResource( 1 )
 
 [node name="PAnimation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "idle"
+animation = "walkr"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.403949, 0.599727 )
 shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )

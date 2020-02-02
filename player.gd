@@ -23,7 +23,7 @@ var jumping = false
 
 var prev_jump_pressed = false
 
-var animation="idle"
+var animation = "idle"
 
 func _physics_process(delta):
 	# Create forces
@@ -41,14 +41,10 @@ func _physics_process(delta):
 	if walk_left:
 		if velocity.x <= WALK_MIN_SPEED and velocity.x > -WALK_MAX_SPEED:
 			force.x -= WALK_FORCE
-			if GRAVITY>1:
-				animation="walk"
 			stop = false
 	elif walk_right:
 		if velocity.x >= -WALK_MIN_SPEED and velocity.x < WALK_MAX_SPEED:
 			force.x += WALK_FORCE
-			if GRAVITY>1:
-				animation="walk"
 			stop = false
 	if up:
 		if velocity.y <= WALK_MIN_SPEED and velocity.y > -WALK_MAX_SPEED and GRAVITY<=1:
@@ -64,7 +60,6 @@ func _physics_process(delta):
 			GRAVITY = 1
 			WALK_FORCE = 50
 			STOP_FORCE = 1000
-			animation="gravity"
 			Physics2DServer.area_set_param(get_world_2d().space, Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, Vector2(0,0))
 		else: 
 			GRAVITY = 157
@@ -86,8 +81,8 @@ func _physics_process(delta):
 			if yvlen < 0:
 				yvlen = 0
 			velocity.y = yvlen * yvsign
-		else:
-			animation="idle"
+		#else:
+			#animation="idle"
 		
 	# Integrate forces to velocity
 	velocity += force * delta	
@@ -110,5 +105,12 @@ func _physics_process(delta):
 	#	$PAnimation.play("idle")
 	on_air_time += delta
 	prev_jump_pressed = jump
-
+	if GRAVITY > 2 and velocity.x == 0:
+		animation = "idle"
+	elif GRAVITY > 2 and velocity.x < 0:
+		animation = "walk"
+	elif GRAVITY > 2 and velocity.x > 0:
+		animation = "walkr"
+	elif GRAVITY < 2 and velocity.x <= 0 or velocity.x > 0:
+		animation = "gravity"
 	$PAnimation.play(animation)
