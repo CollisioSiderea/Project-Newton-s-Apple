@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://blink_16frms_16x25px/blink_0002.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Sprites/falling_5frms_0000.png" type="Texture" id=24]
 [ext_resource path="res://Sprites/falling_5frms_0001.png" type="Texture" id=25]
 [ext_resource path="res://Sprites/falling_5frms_0002.png" type="Texture" id=26]
+[ext_resource path="res://Audios/Level_Soundtrack_ProjectNewtonApple .wav" type="AudioStream" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -44,24 +45,24 @@ animations = [ {
 "name": "walkr",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "airidle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "blink",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "walk",
 "speed": 7.0
 }, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "airidle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "falling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "blink",
 "speed": 5.0
 } ]
 
@@ -84,3 +85,7 @@ current = true
 zoom = Vector2( 0.8, 0.8 )
 smoothing_enabled = true
 smoothing_speed = 3.0
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+autoplay = true
