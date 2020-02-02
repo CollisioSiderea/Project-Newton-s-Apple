@@ -3,19 +3,19 @@ extends KinematicBody2D
 # This demo shows how to build a kinematic controller.
 
 # Member variables
-var GRAVITY = 500.0 # pixels/second/second
+var GRAVITY = 157 # pixels/second/second
 
 # Angle in degrees towards either side that the player can consider "floor"
 const FLOOR_ANGLE_TOLERANCE = 40
-var WALK_FORCE = 100
+var WALK_FORCE = 1000
 const WALK_MIN_SPEED = 10
-const WALK_MAX_SPEED = 200
+const WALK_MAX_SPEED = 100
 var STOP_FORCE = 1000
-const JUMP_SPEED = 200
-const JUMP_MAX_AIRBORNE_TIME = 0.2
+var JUMP_SPEED = 115
+const JUMP_MAX_AIRBORNE_TIME = 0.01
 
-const SLIDE_STOP_VELOCITY = 1.0 # one pixel/second
-const SLIDE_STOP_MIN_TRAVEL = 1.0 # one pixel
+const SLIDE_STOP_VELOCITY = 1000.0 # one pixel/second
+const SLIDE_STOP_MIN_TRAVEL = 1000.0 # one pixel
 
 var velocity = Vector2()
 var on_air_time = 100
@@ -23,6 +23,7 @@ var jumping = false
 
 var prev_jump_pressed = false
 
+var animation="idle"
 
 func _physics_process(delta):
 	# Create forces
@@ -40,49 +41,44 @@ func _physics_process(delta):
 	if walk_left:
 		if velocity.x <= WALK_MIN_SPEED and velocity.x > -WALK_MAX_SPEED:
 			force.x -= WALK_FORCE
-	#		$PAnimation.play("walk")
+			if GRAVITY>1:
+				animation="walk"
 			stop = false
-			#$PAnimation.play("idle")
 	elif walk_right:
 		if velocity.x >= -WALK_MIN_SPEED and velocity.x < WALK_MAX_SPEED:
 			force.x += WALK_FORCE
-	#		$PAnimation.play("walk")
+			if GRAVITY>1:
+				animation="walk"
 			stop = false
-			
 	if up:
-		if velocity.y <= WALK_MIN_SPEED and velocity.y > -WALK_MAX_SPEED:
+		if velocity.y <= WALK_MIN_SPEED and velocity.y > -WALK_MAX_SPEED and GRAVITY<=1:
 			force.y -= WALK_FORCE
 			stop = false
 	elif down:
-		if velocity.y >= -WALK_MIN_SPEED and velocity.y < WALK_MAX_SPEED:
+		if velocity.y >= -WALK_MIN_SPEED and velocity.y < WALK_MAX_SPEED and GRAVITY<=1:
 			force.y += WALK_FORCE
 			stop = false
 			
 	if grav:
-		if GRAVITY == 500:
-			GRAVITY = 0
-	#		$PAnimation.play("gravity")
-			var pfloat = true 
-			
-		if WALK_FORCE == 100: 
-			WALK_FORCE = 10
-		if STOP_FORCE == 1000:
-			STOP_FORCE = 10
+		if GRAVITY == 157:
+			GRAVITY = 1
+			WALK_FORCE = 25
+			STOP_FORCE = 25
+			animation="gravity"
 		else: 
-			GRAVITY = 500
-			WALK_FORCE = 100
+			GRAVITY = 157
+			WALK_FORCE = 250
 			STOP_FORCE = 1000
-		
-	
+
 	if stop:
 		var vsign = sign(velocity.x)
 		var vlen = abs(velocity.x)
-		
 		vlen -= STOP_FORCE * delta
 		if vlen < 0:
 			vlen = 0
-		
 		velocity.x = vlen * vsign
+		if GRAVITY>1:
+				animation="idle"
 		
 	# Integrate forces to velocity
 	velocity += force * delta	
@@ -105,3 +101,5 @@ func _physics_process(delta):
 	#	$PAnimation.play("idle")
 	on_air_time += delta
 	prev_jump_pressed = jump
+	
+	$PAnimation.play(animation)

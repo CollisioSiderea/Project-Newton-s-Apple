@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-func 
+#func 
 #var torque = 20000
 #var GRAVITY = 500.0
 #var thrust = Vector2(0, GRAVITY)
