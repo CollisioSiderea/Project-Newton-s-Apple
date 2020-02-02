@@ -72,7 +72,6 @@ func _physics_process(delta):
 			WALK_MAX_SPEED = 75
 			STOP_FORCE = 1000
 			Physics2DServer.area_set_param(get_world_2d().space, Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, Vector2(0,1.5))
-
 	if stop:
 		var vsign = sign(velocity.x)
 		var vlen = abs(velocity.x)

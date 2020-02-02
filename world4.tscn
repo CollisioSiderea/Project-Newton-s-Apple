@@ -4,7 +4,8 @@
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://RTS_Crate.png" type="Texture" id=4]
-[ext_resource path="res://player.png" type="Texture" id=5]
+[ext_resource path="res://Audios/Sound_GravityOff.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audios/Sound_GravityOn.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0017.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0001.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0014.png" type="Texture" id=9]
@@ -86,7 +87,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 position = Vector2( 51.227, 67.6348 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2( 77.5938, 56.3602 )
+position = Vector2( 117.583, 104.152 )
 __meta__ = {
 "_edit_group_": true
 }
