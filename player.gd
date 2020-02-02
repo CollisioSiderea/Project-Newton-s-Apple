@@ -35,8 +35,12 @@ func _physics_process(delta):
 	var grav = Input.is_action_just_pressed("grav")
 	var up = Input.is_action_pressed("move_up")
 	var down = Input.is_action_pressed("move_bottom")
+	var reset = Input.is_action_just_pressed("reset")
 	
 	var stop = true
+	
+	if reset:
+		get_tree().reload_current_scene()
 	
 	if walk_left:
 		if velocity.x <= WALK_MIN_SPEED and velocity.x > -WALK_MAX_SPEED:
