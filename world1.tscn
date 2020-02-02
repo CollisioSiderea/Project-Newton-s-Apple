@@ -5,6 +5,7 @@
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Newton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/FONDO_SPRITE.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -77,4 +78,12 @@ shape = SubResource( 4 )
 position = Vector2( 0.177028, -0.265521 )
 scale = Vector2( 1.19915, 1.18808 )
 texture = ExtResource( 5 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="FONDO_SPRITE" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 265.55, 247.115 )
+scale = Vector2( 1.65996, 1.53067 )
+z_as_relative = false
+texture = ExtResource( 6 )
 [connection signal="body_entered" from="salida1" to="." method="_on_salida1_body_entered"]
