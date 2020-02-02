@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://colworld.gd" type="Script" id=1]
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
@@ -69,12 +69,14 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 77.3274, 4.77013 )
+extents = Vector2( 15.7206, 15.5659 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 22.2206, 2.36581 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="RectangleShape2D" id=8]
+
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ ExtResource( 31 ) ],
 "loop": true,
@@ -87,13 +89,13 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 4.29886, 2.83267 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 6.48685, 14.8568 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=12]
 
 [node name="colworld" type="Node2D"]
 material = SubResource( 1 )
@@ -174,12 +176,12 @@ script = ExtResource( 5 )
 [node name="botona" type="AnimatedSprite" parent="boton"]
 position = Vector2( 0.250702, 0.0626678 )
 scale = Vector2( 0.821172, 1.01413 )
-frames = SubResource( 8 )
+frames = SubResource( 9 )
 animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boton"]
 position = Vector2( 0.250702, 0.0626678 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="pared" type="StaticBody2D" parent="boton"]
 position = Vector2( 164.109, -60.5411 )
@@ -187,7 +189,7 @@ rotation = -3.14159
 scale = Vector2( 0.91375, -3.26774 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boton/pared"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="puerta" type="Area2D" parent="boton"]
 position = Vector2( 163.917, -60.3703 )
@@ -196,7 +198,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boton/puerta"]
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 [connection signal="body_entered" from="muerte" to="." method="_on_muerte_body_entered"]
 [connection signal="body_entered" from="princes" to="boton" method="_on_princes_body_entered"]
 [connection signal="body_entered" from="salida4" to="." method="_on_salida4_body_entered"]
