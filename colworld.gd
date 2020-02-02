@@ -6,8 +6,8 @@ var push = Input.is_action_just_pressed("push")
 
 func _on_muerte_body_entered(body):
 	if body.get_name() == "caja":
-		print ("ON_MUERTE")
-		#print(get.)
+		get_tree().reload_current_scene()
+	elif body.get_name() == "player":
 		get_tree().reload_current_scene()
 
 

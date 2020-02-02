@@ -1,11 +1,9 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://colworld.gd" type="Script" id=1]
 [ext_resource path="res://obstacle.png" type="Texture" id=2]
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://RTS_Crate.png" type="Texture" id=4]
-[ext_resource path="res://Audios/Sound_GravityOff.wav" type="AudioStream" id=5]
-[ext_resource path="res://Audios/Sound_GravityOn.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0017.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0001.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/NEWTON_JUGO_ARCHIVOBUENO_0014.png" type="Texture" id=9]
@@ -155,7 +153,6 @@ shape = SubResource( 8 )
 [node name="Sprite" type="Sprite" parent="boton"]
 position = Vector2( 0.217352, -0.217332 )
 scale = Vector2( 1.19017, 1.19017 )
-texture = ExtResource( 5 )
 
 [node name="pared" type="StaticBody2D" parent="."]
 position = Vector2( 314.489, 49.2717 )
@@ -170,7 +167,6 @@ shape = SubResource( 8 )
 [node name="Sprite" type="Sprite" parent="pared"]
 position = Vector2( 0.217352, -0.217332 )
 scale = Vector2( 1.19017, 1.19017 )
-texture = ExtResource( 5 )
 [connection signal="body_entered" from="muerte" to="." method="_on_muerte_body_entered"]
 [connection signal="body_entered" from="princess" to="." method="_on_princess_body_entered"]
 [connection signal="body_entered" from="salida4" to="." method="_on_salida4_body_entered"]
