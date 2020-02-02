@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sound_GravityOn.wav-44d233435b462a54472b264d142b6e7f.sample"
+
+[deps]
+
+source_file="res://Audios/Sound_GravityOn.wav"
+dest_files=[ "res://.import/Sound_GravityOn.wav-44d233435b462a54472b264d142b6e7f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
